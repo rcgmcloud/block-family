@@ -1,38 +1,86 @@
 // Resets, Clearfix, etc
+@import 'partials/reset';
+@import 'partials/clearfix';
 
 // Variables
- 
-// Media Query Ranges 
- 
+$test: rgb(23, 250, 250);
+$dark: #03434F;
+$light: #69A9B5;
+$bright: #1E7E90;
+$medium-up: "only screen and (min-width: 600px)";
+$large-up: "only screen and (min-width: 900px)";
+// Media Query Ranges
+
 // Mixins
+@mixin block_font($block_font_size: 25px, $block_font_color: $light){
+  font-size: $block_font_size;
+  color: $block_font_color;
+}
 
 // Styles
+
+
 body{
-  background-color: orange;
+  background-color: $bright;
   text-align: center;
   color: #EEE;
+  @media #{$medium-up} {
+    background-color: $light;
+  }
+  @media #{$large-up} {
+    background-color: $dark;
+  }
+
 }
- 
+
 h1, h2, h3, h4{
   font-family: "Helvetica Neue", "Helvetica", sans-serif;
 }
- 
+
 h1{
   padding: 20px;
+  //color: $test;
 }
- 
+
 h2{
- 
+ @include block_font;
 }
- 
- 
+
+
 .block_family{
-  max-width:350px;
+  width: 70%;
+  //max-width:350px;
   margin:auto;
+  // float: left;
+
+  @media #{$medium-up} {
+    width: 80%;
+  }
+  @media #{$large-up} {
+    width: 90%;
+  }
 }
- 
+
 .block_family li{
+  display: inline-block;
   background-color: #222;
   margin-bottom: 20px;
   padding: 20px;
+  width: 75%;
+  border-radius: 5px;
+  @media #{$medium-up} {
+    width: 40%;
+    &:nth-child(2n+1){
+      background-color: pink;
+    }
+  }
+  @media #{$large-up} {
+    width: 25%;
+    &:nth-child(2n+1){
+      background-color: #222;
+    }
+    &:nth-child(3n+2){
+      background-color: green;
+    }
+  }
 }
